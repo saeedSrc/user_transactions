@@ -30,11 +30,13 @@ services:
       - ./nginx:/etc/nginx/conf.d
   db:
     container_name: expennies-db
-    image: mysql:8.0
+    image: mysql:8.1
     volumes:
       - ./storage/mysql:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_DATABASE: symfony
     ports:
       - "3307:3306"
